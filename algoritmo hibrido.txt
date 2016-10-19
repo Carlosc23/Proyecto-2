@@ -1,0 +1,20 @@
+Entrada: Un grafo, un usuario y un número decimal entre 0 y 1 (??).
+Salida: conjunto de objetos
+1: A cada vecino del usuario objetivo, asignar un peso inicial de 1.
+2: para cada objeto o que tenga un peso diferente de 0 hacer
+3: para cada usuario u vecino de objeto hacer
+4: grado := grado del usuario u
+5: vecinos := número de vecinos del objeto o
+6: tmp := grado(1-)* vecinos
+7: Asignar a u el peso de o dividido entre tmp.
+8: fin para cada
+9: fin para cada
+10: para cada usuario u que tenga un peso diferente de 0 hacer
+11: para cada objeto o vecino de usuario hacer
+12: grado := grado del objeto o
+13: vecinos := número de vecinos del usuario u
+14: tmp := grado(1-)* vecinos
+15: Asignar a o el peso de u dividido entre tmp.
+16: fin para cada
+17: fin para cada
+18: Ordenar los objetos decrecientemente según su peso final.
