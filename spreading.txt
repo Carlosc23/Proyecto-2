@@ -1,0 +1,14 @@
+Entrada: Un grafo y un usuario.
+Salida: Conjunto de objetos recomendados, en orden descendiente.
+1: A cada vecino del usuario objetivo, asignar un peso inicial de 1.
+2: para cada objeto o que tenga un peso diferente de 0 hacer
+3: para cada usuario u vecino de objeto hacer
+4: Asignar a u el peso de o dividido entre el número de vecinos de o.
+5: fin para cada
+6: fin para cada
+7: para cada usuario u que tenga un peso diferente de 0 hacer
+8: para cada objeto o vecino de usuario hacer
+9: Asignar a o el peso de u dividido entre el número de vecinos de u.
+10: fin para cada
+11: fin para cada
+ 12: Ordenar los objetos decrecientemente según su peso final.
