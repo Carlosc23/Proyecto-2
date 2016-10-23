@@ -1,0 +1,41 @@
+//Crear Usuarios
+create (Maria: Alumno{nombre:'Maria'})
+create (Ines: Alumno{nombre:'Ines'})
+create (Curtiss: Maestro {nombre:'Curtiss'})
+create (Alan: Maestro{nombre:'Alan'})
+create (Carlos: Alumno {nombre: 'Carlos'})
+create (Jorge: Alumno {nombre: 'Jorge'})
+// Crear campos
+create (Quimica: Carrera)
+create (Compu: Carrera)
+create (Teorico: Perfil)
+create (Reflexivo: Perfil)
+// Crear relaciones
+create 
+(Carlos)-[:ConPerfil]->(Reflexivo),
+(Ines)-[:ConPerfil]->(Reflexivo),
+(Jorge)-[:ConPerfil]->(Teorico),
+(Maria)-[:ConPerfil]->(Teorico),
+(Carlos)-[:Llevo{curso:'Calculo 1'}]->(Alan),
+(Ines)-[:Llevo{curso:'Calculo 1'}]->(Alan),
+(Jorge)-[:Llevo{curso:'Calculo 1'}]->(Curtiss),
+(Maria)-[:Llevo{curso:'Calculo 1'}]->(Curtiss),
+(Carlos)-[:Estudia]->(Computacion),
+(Ines)-[:Estudia]->(Quimica),
+(Jorge)-[:Estudia]->(Computacion),
+(Maria)-[:Estudia]->(Quimica)	
+create 
+(Andrea)-[:ConPerfil]->(Reflexivo),
+(Andrea)-[:Estudia]->(Quimica)
+
+// Retornar en base a perfil
+MATCH (a: Alumno {nombre:"Andrea"})-[:ConPerfil]->(m)<-[:ConPerfil]-(c),
+      (c)-[:Llevo{curso:'Calculo 1'}]->(m2)
+WHERE NOT (a)-[:Llevo{curso:'Calculo 1'}]->(m2)
+RETURN a,m,c
+
+// Retornar en base a carrera
+MATCH (a: Alumno {nombre:"Andrea"})-[:Estudia]->(m)<-[:Estudia]-(c),
+      (c)-[:Llevo{curso:'Calculo 1'}]->(m2)
+WHERE NOT (a)-[:Llevo{curso:'Calculo 1'}]->(m2)
+RETURN a,m,c
