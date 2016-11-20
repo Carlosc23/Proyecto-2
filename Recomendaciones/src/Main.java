@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -23,7 +24,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Login");
+		this.primaryStage.setTitle("RECUVG");
 		p.llenar();
 		showMainView();
 	}
@@ -42,8 +43,14 @@ public class Main extends Application {
 		Scene scene2 = new Scene(regPane);
 		primaryStage.setScene(scene2);
 		primaryStage.show();  
-	  
-		
+	}
+	public static void showOp() throws IOException{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(Main.class.getResource("OpView.fxml")); 
+		BorderPane regPane = loader.load();
+		Scene scene2 = new Scene(regPane);
+		primaryStage.setScene(scene2);
+		primaryStage.show(); 
 	}
 
 	public static void main(String[] args) {

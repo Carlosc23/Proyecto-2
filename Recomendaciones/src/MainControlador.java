@@ -32,7 +32,11 @@ public class MainControlador {
 		Main.showRegistro();
 	}
 	@FXML
-	private void ingreso() throws SQLException{
+	private void irOp() throws IOException{
+		Main.showOp();
+	}
+	@FXML
+	private void ingreso() throws SQLException, IOException{
 		System.out.println("hola");
 		Conexion con = new Conexion();
 		String query = "MATCH (n:User{user:'"+user.getText()+"',password:'"+pass.getText()+"'})\n" +
@@ -47,7 +51,7 @@ public class MainControlador {
 			}
 		}
 		if (ingresar){
-			 
+			 irOp();
 		}
 		else{
 			JOptionPane.showMessageDialog(null, "Usted no ha ingresado datos validos para ingresar",

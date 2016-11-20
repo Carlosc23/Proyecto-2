@@ -16,19 +16,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane prefHeight="500.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+<BorderPane prefHeight="500.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="OpControlador">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="63.0" prefWidth="450.0">
                <children>
-                  <Label text="Bienvenido: " translateX="80.0" translateY="20.0">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="10.0" layoutY="10.0" text="Label" translateX="170.0" translateY="20.0">
+                  <Label prefHeight="30.0" prefWidth="135.0" text="Bienvenido(a)" translateX="150.0" translateY="20.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -78,9 +72,9 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <TextField prefHeight="25.0" prefWidth="112.0" GridPane.columnIndex="1" />
-                                    <TextField layoutX="235.0" layoutY="37.0" prefHeight="25.0" prefWidth="236.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                    <RadioButton mnemonicParsing="false" text="Marque si lo recomienda" translateX="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                    <TextField fx:id="cursoTxt" prefHeight="25.0" prefWidth="112.0" GridPane.columnIndex="1" />
+                                    <TextField fx:id="cateTxt" layoutX="235.0" layoutY="37.0" prefHeight="25.0" prefWidth="236.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <RadioButton fx:id="exp" mnemonicParsing="false" text="Marque si lo recomienda" translateX="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                               <Separator layoutX="2.0" layoutY="323.0" prefHeight="0.0" prefWidth="450.0" />
