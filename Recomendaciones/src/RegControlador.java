@@ -10,13 +10,13 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.1 
+ *@version 1.2
  * Clase para manejar los registros de usuario.
  */
 public class RegControlador {
 	private Main main;
 	//Listas 
-	private ObservableList<String> listaCarreras =  FXCollections.observableArrayList("Bioinformatica ","Biotecnología Industrial ",
+	private ObservableList<String> listaCarreras =  FXCollections.observableArrayList("Bioinformatica ","Biotecnologia Industrial ",
 			"Ciencia de la Administracion","Ciencias de Alimentos","Ciencia de la Computacion y TI","Civil","Civil Ambiental","Civil Arquitectonica",
 			"Civil Industrial","Electronica","Industrial","Mecanica","Mecanica Industrial","Mecatronica","Quimica",
 			"Quimica Industrial");
@@ -26,6 +26,7 @@ public class RegControlador {
 	private ObservableList<String> listaTarea =  FXCollections.observableArrayList("Me gusta","No me molesta","No me gustan");
 	
 	final int initialValue = 85;
+	//Textfields
 	@FXML
 	private TextField usuarioTxt;
 	@FXML
@@ -34,18 +35,21 @@ public class RegControlador {
 	private TextField nombreTxt;
 	@FXML
 	private TextField coleTxt;
+	//ComboBox
 	@FXML
-	private ComboBox carreras;
+	private ComboBox<String> carreras;
 	@FXML
-	private ComboBox perfiles;
+	private ComboBox<String> perfiles;
 	@FXML
-	private ComboBox prefiere;
+	private ComboBox<String> prefiere;
 	@FXML
-	private ComboBox tarea;
+	private ComboBox<String> tarea;
+	//SpinnerBox
 	@FXML
-	private Spinner promedio = new Spinner();
+	private Spinner<Integer> promedio = new Spinner<Integer>();
 	@FXML
-	private Spinner nivel = new Spinner();
+	private Spinner<Integer> nivel = new Spinner<Integer>();
+	//CheckBox
 	@FXML
 	private CheckBox lectura;
 	@FXML
@@ -64,6 +68,7 @@ public class RegControlador {
 	private CheckBox deportes; 
 	@FXML
 	private CheckBox otros;
+	
 	@FXML
 	private  void initialize(){
 		//this.carreras.setValue("Carreras");
@@ -84,4 +89,43 @@ public class RegControlador {
 		main = new Main(); 
 		main.showMainView();
 	}
+	@FXML
+	private void insertarDatos(){
+		Conexion con = new Conexion();
+		con.insertarUsuario(usuarioTxt.getText(), nombreTxt.getText(), contraTxt.getText());
+		con.relacionarCarrera(usuarioTxt.getText(),this.carreras.getValue());
+		System.out.println(this.prefiere.getValue());
+		System.out.println( this.nivel.getValue());
+		con.relacionarDatos(usuarioTxt.getText(), this.prefiere.getValue(), this.tarea.getValue(), this.nivel.getValue());
+		if(lectura.isSelected()){
+			System.out.println("entre");
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Lectura");
+		}
+		if(videojuegos.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Videojuegos");
+		}
+		if(arte.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Arte");
+		}
+		if(musica.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Musica");
+		}
+		if(peliculas.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Peliculas");
+		}
+		if(anime.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Anime");
+		}
+		if(fiestas.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Fiestas");
+		}
+		if(deportes.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Deportes");
+		}
+		if(otros.isSelected()){
+			con.relacionarPasatiempo(usuarioTxt.getText(), "Otros");
+		}
+		con.close();
+	}
 }
+ 

@@ -21,7 +21,7 @@
    <bottom>
       <HBox prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" minWidth="80.0" mnemonicParsing="false" text="Ok" translateX="140.0" translateY="10.0" />
+            <Button alignment="CENTER" contentDisplay="CENTER" minWidth="80.0" mnemonicParsing="false" onAction="#insertarDatos" text="Ok" translateX="140.0" translateY="10.0" />
             <Button contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#regresarRegistro" prefWidth="80.0" text="Cancelar" translateX="150.0" translateY="10.0" />
          </children>
       </HBox>

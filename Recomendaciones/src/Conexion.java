@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.1 
+ *@version 1.2
  * Clase para hacer manejos con neo4j.
  */
 public class Conexion {
@@ -29,9 +29,8 @@ public class Conexion {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-
-
 	}
+	
 	/**
 	 * @param _query el query para consultar.
 	 * @return la coleccion
@@ -51,15 +50,29 @@ public class Conexion {
 		}
 		return resultado;
 	}
-
+	public void close(){
+		try {
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void insertar(String req){
+		try {
+			stmt.executeUpdate(req);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	/**
 	 * @param nodo Nombre del nodo.
 	 * @param id   Nombre del usuario.
 	 * Metodo para insertar un nodo en la db.
 	 */
-	public void insertar(String nodo,String id){
+	public void insertarUsuario(String nodo,String id,String contra){
 		try {
-			stmt.executeUpdate("CREATE ("+nodo+": User{name:'"+ id+"'})");
+			stmt.executeUpdate("CREATE ("+nodo+": User{user:'"+nodo+"',name:'"+ id+"',password:'"+contra+"'})");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -71,20 +84,47 @@ public class Conexion {
 	 * @param peso	Cantidad de correos representada con length.
 	 * Metodo para hacer las relaciones entre nodos.
 	 */
-	public void relacionar(String name1, String name2,String peso){
+	public void relacionarColegio(String user1, String user2){
 		try {
-			stmt.executeUpdate("MATCH (n:User {name:'" + name1 + "'})" +
-					"MATCH (m:User {name:'" + name2 + "'})" +
-					"MERGE (n)-[:CORREOS {length: " + peso + "}]->(m)");
+			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
+					"MATCH (m:Colegio {name:'" + user2 + "'})" +
+					"MERGE (n)-[:ESTUDIO]->(m)");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public void relacionarprg(String name1, String name2){
+	public void relacionarCarrera(String user1, String user2){
 		try {
-			stmt.executeUpdate("MATCH (n:User {name:'" + name1 + "'})" +
-					"MATCH (m:User {name:'" + name2 + "'})" );
+			
+			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
+					"MATCH (m:Carrera {name:'" + user2 + "'})" +
+					"MERGE (n)-[:ESTUDIA]->(m)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void relacionarPasatiempo(String user1, String user2){
+		try {
+			stmt.executeUpdate("MERGE ("+user2+":Pasatiempo {name:'"+user2+"'})");
+			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
+					"MATCH (m:Pasatiempo {name:'" + user2 + "'})" +
+					"MERGE (n)-[:GUSTADE]->(m)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	} 
+	public void relacionarDatos(String user1, String prefe, String tare,int nive){
+		try {
+			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
+					"MATCH (m:Preferencia {name:'" + prefe + "'})" +
+					"MERGE (n)-[:PREFIERE]->(m)");
+			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
+					"MATCH (m:Tarea {name:'" + tare + "'})" +
+					"MERGE (n)-[:TAREA]->(m)");
+			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
+					"MATCH (m:Nivel {name:" + nive + "})" +
+					"MERGE (n)-[:NIVELESTUDIO]->(m)");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

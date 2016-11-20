@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.1 
+ *@version 1.2 
  * Clase encargada de dar interfaz.
  */
 public class Main extends Application {
@@ -19,10 +19,12 @@ public class Main extends Application {
 	//private static Stage  primary2Stage;
 	private VBox mainLayout;
 	private static BorderPane lay;
+	private Procesos p = new Procesos();
 	@Override
 	public void start(Stage primaryStage) throws IOException {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Login");
+		p.llenar();
 		showMainView();
 	}
 	public void showMainView() throws IOException{
@@ -40,7 +42,7 @@ public class Main extends Application {
 		Scene scene2 = new Scene(regPane);
 		primaryStage.setScene(scene2);
 		primaryStage.show();  
-	
+	  
 		
 	}
 
