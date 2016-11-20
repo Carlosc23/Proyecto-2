@@ -10,7 +10,7 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.2
+ *@version 1.3
  * Clase para manejar los registros de usuario.
  */
 public class RegControlador {

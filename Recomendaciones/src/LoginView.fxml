@@ -10,9 +10,9 @@
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: DARKCYAN;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainControlador">
    <children>
       <Label text="RECUVG" /> 
-      <TextField promptText="Usuario" />
-      <PasswordField promptText="Contrasena" />
-      <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Ingresar" />
+      <TextField fx:id="user" promptText="Usuario" />
+      <PasswordField fx:id="pass" promptText="Contrasena" />
+      <Button mnemonicParsing="false" onAction="#ingreso" prefHeight="25.0" prefWidth="70.0" text="Ingresar" />
       <Button layoutX="284.0" layoutY="261.0" mnemonicParsing="false" onAction="#irRegistro" text="Registrarse" />
    </children>
    <padding>

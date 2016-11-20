@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.2
+ *@version 1.3
  * Clase para hacer manejos con neo4j.
  */
 public class Conexion {
@@ -43,8 +43,8 @@ public class Conexion {
 			state = (Statement) con.createStatement();
 			resultado = state.executeQuery(_query);
 		}
-		catch(SQLException e)
-		{
+		catch(SQLException e){
+			System.out.println("naaaa");
 			e.printStackTrace();
 
 		}
@@ -86,6 +86,7 @@ public class Conexion {
 	 */
 	public void relacionarColegio(String user1, String user2){
 		try {
+			stmt.executeUpdate("MERGE ("+user2+":Colegio {name:'"+user2+"'})");
 			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
 					"MATCH (m:Colegio {name:'" + user2 + "'})" +
 					"MERGE (n)-[:ESTUDIO]->(m)");

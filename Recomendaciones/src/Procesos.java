@@ -3,7 +3,7 @@ import javafx.collections.ObservableList;
 
 /**
  *  @author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *  @version 1.2
+ *  @version 1.3
  *  Clase para hacer procesos.
  */
 public class Procesos {

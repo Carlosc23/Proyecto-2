@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane prefHeight="500.0" prefWidth="450.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.60">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox prefHeight="63.0" prefWidth="450.0">
+               <children>
+                  <Label text="Bienvenido: " translateX="80.0" translateY="20.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="10.0" layoutY="10.0" text="Label" translateX="170.0" translateY="20.0">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Separator layoutY="65.0" prefHeight="0.0" prefWidth="450.0" />
+            <TabPane layoutX="-2.0" layoutY="65.0" prefHeight="435.0" prefWidth="450.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Experiencia nueva">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox layoutX="1.0" prefHeight="64.0" prefWidth="450.0">
+                                 <children>
+                                    <Label text="A continuacion,describa su experiencia en en el curso respectivo, &#10;con el catedratico respectivo:" translateX="20.0" translateY="15.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Separator layoutX="1.0" layoutY="66.0" prefHeight="0.0" prefWidth="450.0" />
+                              <GridPane layoutX="2.0" layoutY="69.0" prefHeight="235.0" prefWidth="450.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="185.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="265.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="74.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="98.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="101.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Curso recibido: " translateX="10.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="41.0" text="Catedratico: " translateX="10.0" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="120.0" text="Experiencia: " translateX="10.0" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField prefHeight="25.0" prefWidth="112.0" GridPane.columnIndex="1" />
+                                    <TextField layoutX="235.0" layoutY="37.0" prefHeight="25.0" prefWidth="236.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                    <RadioButton mnemonicParsing="false" text="Marque si lo recomienda" translateX="10.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                 </children>
+                              </GridPane>
+                              <Separator layoutX="2.0" layoutY="323.0" prefHeight="0.0" prefWidth="450.0" />
+                              <Button layoutX="185.0" layoutY="348.0" mnemonicParsing="false" text="Enviar">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Recomendacion">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="64.0" prefWidth="450.0">
+                                 <children>
+                                    <Label prefHeight="76.0" prefWidth="421.0" text="¿Necesita recomendacion?  Por favor ingrese los parametros &#10;solicitados para darle la mejor recomendacion posible." translateX="20.0" translateY="10.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <Separator layoutY="76.0" prefHeight="1.0" prefWidth="450.0" />
+                              <GridPane layoutY="79.0" prefHeight="249.0" prefWidth="450.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="416.0" minWidth="10.0" prefWidth="416.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="34.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="86.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                  <RowConstraints maxHeight="141.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="213.0" text="Buscar por colegio" translateX="95.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="217.0" text="Buscar por carrera" translateX="95.0" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="220.0" text="Buscar por promedio" translateX="95.0" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="10.0" layoutY="117.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="220.0" text="Buscar por Intereses" translateX="95.0" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                    <Button layoutX="10.0" layoutY="165.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="321.0" text="Buscar por datos estudiantiles" translateX="45.0" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

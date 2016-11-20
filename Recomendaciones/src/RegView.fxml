@@ -75,9 +75,9 @@
                         <Insets />
                      </GridPane.margin>
                   </Label>
-                  <PasswordField fx:id="contraTxt" prefHeight="25.0" prefWidth="229.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="usuarioTxt" prefHeight="25.0" prefWidth="292.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="nombreTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="contraTxt" prefHeight="25.0" prefWidth="229.0" promptText="Ingrese una contrasena" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="usuarioTxt" prefHeight="25.0" prefWidth="292.0" promptText="Ingrese el usuario deseado" GridPane.columnIndex="1" />
+                  <TextField fx:id="nombreTxt" promptText="Ingrese nombre" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <Label text="Colegio:" translateX="10.0" GridPane.rowIndex="3">
                      <font>
                         <Font size="20.0" />
