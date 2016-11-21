@@ -16,7 +16,6 @@ public class Main extends Application {
 	private static Stage primaryStage;
 	//private static Stage  primary2Stage;
 	private VBox mainLayout;
-	private static BorderPane lay;
 	private Procesos p = new Procesos();
 	@Override
 	public void start(Stage primaryStage) throws IOException {
