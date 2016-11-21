@@ -3,12 +3,11 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.3
+ *@version 1.4
  * Clase para hacer manejos con neo4j.
  */
 public class Conexion {

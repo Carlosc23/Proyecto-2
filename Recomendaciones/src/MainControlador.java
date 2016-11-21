@@ -1,21 +1,15 @@
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.3 
+ *@version 1.4 
  * Clase para manejar los registros acciones de login
  */
 public class MainControlador {
-	private Main main;
 	private boolean ingresar;
 	@FXML
 	private TextField user;
@@ -51,6 +45,7 @@ public class MainControlador {
 			}
 		}
 		if (ingresar){
+			 Contenedor.setUsuario(user.getText());
 			 irOp();
 		}
 		else{
