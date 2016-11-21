@@ -94,6 +94,7 @@ public class RegControlador {
 		Conexion con = new Conexion();
 		con.insertarUsuario(usuarioTxt.getText(), nombreTxt.getText(), contraTxt.getText());
 		con.relacionarCarrera(usuarioTxt.getText(),this.carreras.getValue());
+		con.relacionarColegio(this.usuarioTxt.getText(), this.coleTxt.getText());
 		System.out.println(this.prefiere.getValue());
 		System.out.println( this.nivel.getValue());
 		con.relacionarDatos(usuarioTxt.getText(), this.prefiere.getValue(), this.tarea.getValue(), this.nivel.getValue());
@@ -124,6 +125,22 @@ public class RegControlador {
 		}
 		if(otros.isSelected()){
 			con.relacionarPasatiempo(usuarioTxt.getText(), "Otros");
+		}
+		if(this.promedio.getValue()>=90){
+			con.relacionarPromedio(this.usuarioTxt.getText(), "Honor");
+		}
+		else if(this.promedio.getValue()>=85 && this.promedio.getValue()<90){
+			con.relacionarPromedio(this.usuarioTxt.getText(), "Distinguido");
+		}
+		else if(this.promedio.getValue()>=80 && this.promedio.getValue()<85){
+			con.relacionarPromedio(this.usuarioTxt.getText(), "Mencion");
+		}
+		else if(this.promedio.getValue()>=70 && this.promedio.getValue()<80){
+			
+			con.relacionarPromedio(this.usuarioTxt.getText(), "Promedio");
+		}
+		else if(this.promedio.getValue()>=65 && this.promedio.getValue()<70){
+			con.relacionarPromedio(this.usuarioTxt.getText(), "Bajo");
 		}
 		con.close();
 	}

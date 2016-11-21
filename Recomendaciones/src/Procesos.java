@@ -22,6 +22,7 @@ public class Procesos {
 	private ObservableList<String> listaPrefieres =  FXCollections.observableArrayList("Recibir teoria","Recibir ejemplos");
 	private ObservableList<String> listaTarea =  FXCollections.observableArrayList("Megusta","Nomemolesta","Nomegustan");
 	private ObservableList<String> listaTareas =  FXCollections.observableArrayList("Me gusta","No me molesta","No me gustan");
+	private ObservableList<String> listaPromedio =  FXCollections.observableArrayList("Honor","Distinguido","Mencion","Promedio","Bajo");
 	public Procesos(){}
 	
 	public void llenar(){
@@ -42,6 +43,9 @@ public class Procesos {
 		for (String i: listaTarea){
 			con.insertar("MERGE ("+i+":Tarea {name:'"+listaTareas.get(conta)+"'})");
 			conta++;
+		}
+		for (String i: listaPromedio){
+			con.insertar("MERGE ("+i+":Promedio {name:'"+i+"'})");
 		}
 		con.close();
 		

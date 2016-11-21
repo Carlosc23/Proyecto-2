@@ -112,33 +112,35 @@
                                   <RowConstraints maxHeight="141.0" minHeight="0.0" prefHeight="50.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
                                     <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+                                    <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#buscarPorColegio" prefHeight="44.0" prefWidth="213.0" text="Buscar por colegio" translateX="95.0">
+                                    <Button mnemonicParsing="false" onAction="#buscarPorColegio" prefHeight="44.0" prefWidth="213.0" text="Buscar por colegio" translateX="95.0" GridPane.rowIndex="1">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#buscarPorCarrera" prefHeight="44.0" prefWidth="217.0" text="Buscar por carrera" translateX="95.0" GridPane.rowIndex="1">
+                                    <Button mnemonicParsing="false" onAction="#buscarPorCarrera" prefHeight="44.0" prefWidth="217.0" text="Buscar por carrera" translateX="95.0" GridPane.rowIndex="2">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Button>
-                                    <Button mnemonicParsing="false" onAction="#buscarPorPromedio" prefHeight="44.0" prefWidth="220.0" text="Buscar por promedio" translateX="95.0" GridPane.rowIndex="2">
+                                    <Button mnemonicParsing="false" onAction="#buscarPorPromedio" prefHeight="44.0" prefWidth="220.0" text="Buscar por promedio" translateX="95.0" GridPane.rowIndex="3">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="10.0" layoutY="117.0" mnemonicParsing="false" onAction="#buscarPorInteres" prefHeight="44.0" prefWidth="220.0" text="Buscar por Intereses" translateX="95.0" GridPane.rowIndex="3">
+                                    <Button layoutX="10.0" layoutY="117.0" mnemonicParsing="false" onAction="#buscarPorInteres" prefHeight="44.0" prefWidth="220.0" text="Buscar por Intereses" translateX="95.0" GridPane.rowIndex="4">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Button>
-                                    <Button layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#buscarPordatos" prefHeight="44.0" prefWidth="321.0" text="Buscar por datos estudiantiles" translateX="45.0" GridPane.rowIndex="4">
+                                    <Button layoutX="10.0" layoutY="165.0" mnemonicParsing="false" onAction="#buscarPordatos" prefHeight="44.0" prefWidth="321.0" text="Buscar por datos estudiantiles" translateX="45.0" GridPane.rowIndex="5">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
                                     </Button>
+                                    <TextField fx:id="cursocTxt" prefHeight="25.0" prefWidth="358.0" promptText="Ingrese curso deseado" translateX="10.0" />
                                  </children>
                               </GridPane>
                            </children>

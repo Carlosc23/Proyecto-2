@@ -53,7 +53,6 @@ public class Conexion {
 		try {
 			con.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -100,6 +99,16 @@ public class Conexion {
 			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
 					"MATCH (m:Carrera {name:'" + user2 + "'})" +
 					"MERGE (n)-[:ESTUDIA]->(m)");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	public void relacionarPromedio(String user1, String user2){
+		try {
+			
+			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
+					"MATCH (m:Promedio {name:'" + user2 + "'})" +
+					"MERGE (n)-[:CON]->(m)");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
