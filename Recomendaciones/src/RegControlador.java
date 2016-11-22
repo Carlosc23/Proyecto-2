@@ -81,7 +81,7 @@ public class RegControlador {
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(65, 100, initialValue);
         this.promedio.setValueFactory(valueFactory);
        valueFactory = 
-                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5, 1);
+                new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 4, 1);
         this.nivel.setValueFactory(valueFactory); 
 	}
 	@FXML
@@ -97,7 +97,22 @@ public class RegControlador {
 		con.relacionarColegio(this.usuarioTxt.getText(), this.coleTxt.getText());
 		System.out.println(this.prefiere.getValue());
 		System.out.println( this.nivel.getValue());
-		con.relacionarDatos(usuarioTxt.getText(), this.prefiere.getValue(), this.tarea.getValue(), this.nivel.getValue());
+		if(this.nivel.getValue()==1){
+			con.relacionarDatos(usuarioTxt.getText(), this.prefiere.getValue(), this.tarea.getValue(), "Nada");
+			
+		}
+		else if(this.nivel.getValue()==2){
+			con.relacionarDatos(usuarioTxt.getText(), this.prefiere.getValue(), this.tarea.getValue(), "Poco");
+			
+		}
+		else if(this.nivel.getValue()==3){
+			con.relacionarDatos(usuarioTxt.getText(), this.prefiere.getValue(), this.tarea.getValue(), "Promedio");
+			
+		}
+		else if(this.nivel.getValue()==4){
+			con.relacionarDatos(usuarioTxt.getText(), this.prefiere.getValue(), this.tarea.getValue(), "Estudioso");
+			
+		}
 		if(lectura.isSelected()){
 			System.out.println("entre");
 			con.relacionarPasatiempo(usuarioTxt.getText(), "Lectura");

@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.4
+ *@version 2.0
  * Clase para hacer manejos con neo4j.
  */
 public class Conexion {
@@ -123,7 +123,7 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	} 
-	public void relacionarDatos(String user1, String prefe, String tare,int nive){
+	public void relacionarDatos(String user1, String prefe, String tare,String nive){
 		try {
 			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
 					"MATCH (m:Preferencia {name:'" + prefe + "'})" +
@@ -132,7 +132,7 @@ public class Conexion {
 					"MATCH (m:Tarea {name:'" + tare + "'})" +
 					"MERGE (n)-[:TAREA]->(m)");
 			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
-					"MATCH (m:Nivel {name:" + nive + "})" +
+					"MATCH (m:Nivel {name:'" + nive + "'})" +
 					"MERGE (n)-[:NIVELESTUDIO]->(m)");
 		} catch (SQLException e) {
 			e.printStackTrace();

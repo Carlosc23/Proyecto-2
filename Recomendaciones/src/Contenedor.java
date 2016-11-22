@@ -1,6 +1,6 @@
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.4
+ *@version 2.0
  * Clase contenedora.
  */ 
 public class Contenedor {

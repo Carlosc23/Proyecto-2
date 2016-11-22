@@ -1,5 +1,7 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
@@ -7,7 +9,7 @@ import javafx.scene.control.TextField;
 
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.4
+ *@version 2.0
  * Clase para manejar los registros de usuario.
  */
 public final class OpControlador {
@@ -44,45 +46,128 @@ public final class OpControlador {
 	@FXML
 	private void buscarPorColegio() throws SQLException{ 
 		Conexion con = new Conexion();
+		Catedratico c;
+		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
+		Set<Catedratico> arrayn = new TreeSet<Catedratico>();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:ESTUDIO]->(m)<-[:ESTUDIO]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Positivo'}]->(m2)"
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
-				+ "RETURN m2.name,c.name";
+				+ "RETURN m2.name, COUNT(c.name) as count";
+		String s2="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:ESTUDIO]->(m)<-[:ESTUDIO]-(c),\n"
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Negativo'}]->(m2)"
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "RETURN m2.name, COUNT(c.name) as count";
 		ResultSet rs= con.getQuery(s);
+		int n;
 		while(rs.next()){
-			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name"));
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayp.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
 		}
+		rs= con.getQuery(s2);
+		while(rs.next()){
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayn.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
+		}
+		for (Catedratico c2: arrayp){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
+		for (Catedratico c2: arrayn){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
+		con.close();
+		
 	}
 	@FXML
 	private void buscarPorCarrera() throws SQLException{
 		Conexion con = new Conexion();
+		Catedratico c;
+		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
+		Set<Catedratico> arrayn = new TreeSet<Catedratico>();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:ESTUDIA]->(m)<-[:ESTUDIA]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Positivo'}]->(m2)"
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
-				+ "RETURN m2.name,c.name";
+				+ "RETURN m2.name, COUNT(c.name) as count";
+		String s2="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:ESTUDIA]->(m)<-[:ESTUDIA]-(c),\n"
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Negativo'}]->(m2)"
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "RETURN m2.name, COUNT(c.name) as count";
 		ResultSet rs= con.getQuery(s);
+		int n;
 		while(rs.next()){
-			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name"));
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayp.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
+		}
+		rs= con.getQuery(s2);
+		while(rs.next()){
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayn.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
+		}
+		for (Catedratico c2: arrayp){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
+		for (Catedratico c2: arrayn){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
 		con.close();
 	}
 	@FXML
 	private void buscarPorPromedio() throws SQLException{
 		Conexion con = new Conexion();
+		Catedratico c;
+		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
+		Set<Catedratico> arrayn = new TreeSet<Catedratico>();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:CON]->(m)<-[:CON]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Positivo'}]->(m2)"
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
-				+ "RETURN m2.name,c.name";
+				+ "RETURN m2.name, COUNT(c.name) as count";
+		String s2="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:CON]->(m)<-[:CON]-(c),\n"
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Negativo'}]->(m2)"
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "RETURN m2.name, COUNT(c.name) as count";
 		ResultSet rs= con.getQuery(s);
-		int contador=0;
+		int n;
 		while(rs.next()){
-			contador ++;
-			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name")+"cc");
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayp.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
 		}
-		System.out.println(""+contador);
+		rs= con.getQuery(s2);
+		while(rs.next()){
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayn.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
+		}
+		for (Catedratico c2: arrayp){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
+		for (Catedratico c2: arrayn){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
 		con.close();
 	}
 	@FXML
@@ -102,21 +187,61 @@ public final class OpControlador {
 		}
 		System.out.println(""+contador);
 		con.close();
+		/*
+		 * MATCH (a:User {user:'Carlosc23'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),
+(a)-[:TAREA]->(t)<-[:TAREA]-(c),
+(c)-[:RECIBIO{curso:'Fisica 1'}]->(m2),
+(c)-[re: OPINA{opinion:'Positivo'}]->(m2)
+WHERE NOT (a)-[:RECIBIO{curso:'Fisica 1'}]->(m2)
+RETURN m2.name,c.name, COUNT(c.name) as countMATCH (a:User {user:'Carlosc23'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),
+(a)-[:TAREA]->(t)<-[:TAREA]-(c),
+(c)-[:RECIBIO{curso:'Fisica 1'}]->(m2),
+(c)-[re: OPINA{opinion:'Positivo'}]->(m2)
+WHERE NOT (a)-[:RECIBIO{curso:'Fisica 1'}]->(m2)
+RETURN m2.name,c.name, COUNT(c.name) as count
+		 * */
 		
 	}
 	@FXML
 	private void buscarPorInteres() throws SQLException{
 		Conexion con = new Conexion();
+		Catedratico c;
+		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
+		Set<Catedratico> arrayn = new TreeSet<Catedratico>();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:GUSTADE]->(m)<-[:GUSTADE]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Positivo'}]->(m2)"
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
-				+ "RETURN m2.name,c.name";
+				+ "RETURN m2.name, COUNT(c.name) as count";
+		String s2="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:GUSTADE]->(m)<-[:GUSTADE]-(c),\n"
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(c)-[re: OPINA{opinion:'Negativo'}]->(m2)"
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "RETURN m2.name, COUNT(c.name) as count";
 		ResultSet rs= con.getQuery(s);
+		int n;
 		while(rs.next()){
-			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name")+"cc");
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayp.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
 		}
-		
+		rs= con.getQuery(s2);
+		while(rs.next()){
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayn.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
+		}
+		for (Catedratico c2: arrayp){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
+		for (Catedratico c2: arrayn){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
 		con.close();
 	}
 	

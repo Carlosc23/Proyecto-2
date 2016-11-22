@@ -8,7 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.3 
+ *@version 2.0
  * Clase encargada de dar interfaz.   
  */  
 public class Main extends Application {
@@ -41,7 +41,7 @@ public class Main extends Application {
 		primaryStage.show();  
 	}
 	public static void showOp() throws IOException{
-		FXMLLoader loader = new FXMLLoader();
+		FXMLLoader loader = new FXMLLoader(); 
 		loader.setLocation(Main.class.getResource("OpView.fxml")); 
 		BorderPane regPane = loader.load();
 		Scene scene2 = new Scene(regPane);

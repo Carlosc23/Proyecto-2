@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 
 /**
  *  @author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *  @version 1.4
+ *  @version 2.0
  *  Clase para hacer procesos.
  */
 public class Procesos {
@@ -24,6 +24,8 @@ public class Procesos {
 	private ObservableList<String> listaTarea =  FXCollections.observableArrayList("Megusta","Nomemolesta","Nomegustan");
 	private ObservableList<String> listaTareas =  FXCollections.observableArrayList("Me gusta","No me molesta","No me gustan");
 	private ObservableList<String> listaPromedio =  FXCollections.observableArrayList("Honor","Distinguido","Mencion","Promedio","Bajo");
+	private ObservableList<String> listaNivel =  FXCollections.observableArrayList("Nada","Poco","Promedio","Estudioso");
+	
 	public Procesos(){}
 	
 	public void llenar(){
@@ -47,6 +49,9 @@ public class Procesos {
 		}
 		for (String i: listaPromedio){
 			con.insertar("MERGE ("+i+":Promedio {name:'"+i+"'})");
+		}
+		for (String i: listaNivel){
+			con.insertar("MERGE ("+i+":Nivel {name:'"+i+"'})");
 		}
 		con.close();
 		
