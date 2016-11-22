@@ -46,8 +46,8 @@ public final class OpControlador {
 		Conexion con = new Conexion();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:ESTUDIO]->(m)<-[:ESTUDIO]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt+"'}]->(m2)\n "
-				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
 				+ "RETURN m2.name,c.name";
 		ResultSet rs= con.getQuery(s);
 		while(rs.next()){
@@ -59,8 +59,8 @@ public final class OpControlador {
 		Conexion con = new Conexion();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:ESTUDIA]->(m)<-[:ESTUDIA]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt+"'}]->(m2)\n "
-				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
 				+ "RETURN m2.name,c.name";
 		ResultSet rs= con.getQuery(s);
 		while(rs.next()){
@@ -73,12 +73,12 @@ public final class OpControlador {
 		Conexion con = new Conexion();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:CON]->(m)<-[:CON]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt+"'}]->(m2)\n "
-				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
 				+ "RETURN m2.name,c.name";
 		ResultSet rs= con.getQuery(s);
 		while(rs.next()){
-			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name"));
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name")+"cc");
 		}
 		
 		con.close();

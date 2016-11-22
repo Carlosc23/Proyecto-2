@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
  *@version 1.3 
- * Clase encargada de dar interfaz.
+ * Clase encargada de dar interfaz.   
  */  
 public class Main extends Application {
 	/*Atributos*/
