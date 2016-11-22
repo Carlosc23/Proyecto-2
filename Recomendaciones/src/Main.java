@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  */  
 public class Main extends Application {
 	/*Atributos*/
-	private static Stage primaryStage;
+	private static Stage primaryStage; 
 	//private static Stage  primary2Stage;
 	private VBox mainLayout;
 	private Procesos p = new Procesos();

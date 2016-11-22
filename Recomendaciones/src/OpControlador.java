@@ -172,20 +172,50 @@ public final class OpControlador {
 	}
 	@FXML
 	private void buscarPordatos() throws SQLException{
-		
 		Conexion con = new Conexion();
+		Catedratico c;
+		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
+		Set<Catedratico> arrayn = new TreeSet<Catedratico>();
 		System.out.println(Contenedor.getUsuario());
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),\n"
-				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(a)-[:TAREA]->(n)<-[:TAREA]-(c),\n"
+				+"(a)-[:NIVELESTUDIO]->(n)<-[:NIVELESTUDIO]-(c),\n"
+				+"(a)-[:PREFIERE]->(n)<-[:PREFIERE]-(c),\n"
+				+"(c)-[re: OPINA{opinion:'Positivo'}]->(m2)"
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "RETURN m2.name,c.name";
+		String s2="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),\n"
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
+				+"(a)-[:TAREA]->(n)<-[:TAREA]-(c),\n"
+				+"(a)-[:NIVELESTUDIO]->(n)<-[:NIVELESTUDIO]-(c),\n"
+				+"(a)-[:PREFIERE]->(n)<-[:PREFIERE]-(c),\n"
+				+"(c)-[re: OPINA{opinion:'Negativo'}]->(m2)"
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
 				+ "RETURN m2.name,c.name";
 		ResultSet rs= con.getQuery(s);
-		int contador=0;
+		int n=0;
 		while(rs.next()){
-			contador ++;
-			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name")+"cc");
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayp.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
 		}
-		System.out.println(""+contador);
+		rs= con.getQuery(s2);
+		while(rs.next()){
+			n= Integer.parseInt(rs.getString("count"));
+			c = new Catedratico(rs.getString("m2.name"),n);
+			arrayn.add(c);
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("count"));
+		}
+		for (Catedratico c2: arrayp){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
+		for (Catedratico c2: arrayn){
+			System.out.println("ent"+c2.getNombre());
+			System.out.println("ent"+c2.getNumeroValoraciones());
+		}
 		con.close();
 		/*
 		 * MATCH (a:User {user:'Carlosc23'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),
@@ -193,12 +223,7 @@ public final class OpControlador {
 (c)-[:RECIBIO{curso:'Fisica 1'}]->(m2),
 (c)-[re: OPINA{opinion:'Positivo'}]->(m2)
 WHERE NOT (a)-[:RECIBIO{curso:'Fisica 1'}]->(m2)
-RETURN m2.name,c.name, COUNT(c.name) as countMATCH (a:User {user:'Carlosc23'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),
-(a)-[:TAREA]->(t)<-[:TAREA]-(c),
-(c)-[:RECIBIO{curso:'Fisica 1'}]->(m2),
-(c)-[re: OPINA{opinion:'Positivo'}]->(m2)
-WHERE NOT (a)-[:RECIBIO{curso:'Fisica 1'}]->(m2)
-RETURN m2.name,c.name, COUNT(c.name) as count
+RETURN m2.name, COUNT(c.name) as count
 		 * */
 		
 	}

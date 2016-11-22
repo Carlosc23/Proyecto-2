@@ -70,7 +70,7 @@ public class Conexion {
 	 */
 	public void insertarUsuario(String nodo,String id,String contra){
 		try {
-			stmt.executeUpdate("CREATE ("+nodo+": User{user:'"+nodo+"',name:'"+ id+"',password:'"+contra+"'})");
+			stmt.executeUpdate("MERGE ("+nodo+": User{user:'"+nodo+"',name:'"+ id+"',password:'"+contra+"'})");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
