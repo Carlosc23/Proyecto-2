@@ -77,19 +77,47 @@ public final class OpControlador {
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
 				+ "RETURN m2.name,c.name";
 		ResultSet rs= con.getQuery(s);
+		int contador=0;
+		while(rs.next()){
+			contador ++;
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name")+"cc");
+		}
+		System.out.println(""+contador);
+		con.close();
+	}
+	@FXML
+	private void buscarPordatos() throws SQLException{
+		
+		Conexion con = new Conexion();
+		System.out.println(Contenedor.getUsuario());
+		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),\n"
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "RETURN m2.name,c.name";
+		ResultSet rs= con.getQuery(s);
+		int contador=0;
+		while(rs.next()){
+			contador ++;
+			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name")+"cc");
+		}
+		System.out.println(""+contador);
+		con.close();
+		
+	}
+	@FXML
+	private void buscarPorInteres() throws SQLException{
+		Conexion con = new Conexion();
+		System.out.println(Contenedor.getUsuario());
+		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:GUSTADE]->(m)<-[:GUSTADE]-(c),\n"
+				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
+				+ "RETURN m2.name,c.name";
+		ResultSet rs= con.getQuery(s);
 		while(rs.next()){
 			System.out.println(rs.getString("m2.name")+", "+rs.getString("c.name")+"cc");
 		}
 		
 		con.close();
-	}
-	@FXML
-	private void buscarPordatos(){
-		
-	}
-	@FXML
-	private void buscarPorInteres(){
-		
 	}
 	
 }
