@@ -73,6 +73,7 @@ public class Conexion {
 	/**
 	 * @param nodo Nombre del nodo.
 	 * @param id   Nombre del usuario.
+	 * @param contra Contrasena del usuario
 	 * Metodo para insertar un nodo en la db.
 	 */
 	public void insertarUsuario(String nodo,String id,String contra){

@@ -12,7 +12,7 @@
   </class>  
   <class id="2" language="java" name="Main" project="Recomendaciones" file="/Recomendaciones/src/Main.java" 
     binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="475" y="600"/>    
+    <position height="-1" width="-1" x="492" y="599"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <class id="6" language="java" name="OpControlador" project="Recomendaciones" 
     file="/Recomendaciones/src/OpControlador.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="166" y="1203"/>    
+    <position height="-1" width="-1" x="-92" y="1212"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -57,68 +57,115 @@
   </class>  
   <class id="7" language="java" name="MainControlador" project="Recomendaciones" 
     file="/Recomendaciones/src/MainControlador.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="114" y="699"/>    
+    <position height="-1" width="-1" x="241" y="837"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <dependency id="8">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <dependency id="9">    
-    <end type="SOURCE" refId="7"/>    
+  <class id="8" language="java" name="Catedratico" project="Recomendaciones" 
+    file="/Recomendaciones/src/Catedratico.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="-4" y="419"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="DesplegarControlador" project="Recomendaciones" 
+    file="/Recomendaciones/src/DesplegarControlador.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="5" y="216"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <dependency id="10">    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </dependency>  
-  <dependency id="10">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="5"/>  
-  </dependency>  
   <association id="11">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="12" name="arreglob"/>      
+      <multiplicity id="13" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="14">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="12" name="main">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <attribute id="15" name="main">        
+        <position height="0" width="0" x="17" y="-1"/>      
       </attribute>      
-      <multiplicity id="13" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="16" minimum="0" maximum="1">        
+        <position height="0" width="0" x="17" y="-1"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="14">    
+  <dependency id="17">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="18">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="5"/>  
   </dependency>  
-  <association id="15">    
+  <dependency id="19">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <association id="20">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="16" name="p">        
+      <attribute id="21" name="p">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="17" minimum="0" maximum="1">        
+      <multiplicity id="22" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="18">    
+  <association id="23">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="19" name="con">        
+      <attribute id="24" name="con">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="20" minimum="0" maximum="1">        
+      <multiplicity id="25" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <dependency id="21">    
+  <dependency id="26">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="27">    
+    <bendpoint x="150" y="480"/>    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="28" name="arreglom"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <dependency id="30">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="31">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="32">    
     <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="TARGET" refId="8"/>  
   </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
