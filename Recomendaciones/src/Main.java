@@ -28,7 +28,7 @@ public class Main extends Application {
 		showMainView();
 	}
 	/**
-	 * Muestra la ventana principal.
+	 * Muestra la ventana principal
 	 * @throws IOException
 	 */
 	public void showMainView() throws IOException{
@@ -52,7 +52,7 @@ public class Main extends Application {
 		primaryStage.show();  
 	}
 	/**
-	 * Metodo para mostrar el gui de opiniones.
+	 * Metodo para mostrar el gui de opiniones
 	 * @throws IOException
 	 */
 	public static void showOp() throws IOException{
@@ -64,7 +64,7 @@ public class Main extends Application {
 		primaryStage.show(); 
 	}
 	/**
-	 * Metodo para mostrar la ventana de desplegar.
+	 * Metodo para mostrar la ventana de desplegar
 	 * @throws IOException
 	 */
 	public static void showDesplegar() throws IOException{
