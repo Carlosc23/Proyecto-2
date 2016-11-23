@@ -6,7 +6,6 @@ import java.util.TreeSet;
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
-
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
  *@version 3.0
@@ -30,7 +29,8 @@ public final class OpControlador {
 		
 	}
 	/**
-	 * Metodo para desplegar componentes.
+	 * Metodo para mostrar ventana de despliegue de
+	 * catedraticos.
 	 * @throws IOException
 	 */
 	@FXML
@@ -112,6 +112,12 @@ public final class OpControlador {
 		irDesplegar(); 
 		
 	}
+	/**
+	 * Metodo para buscar catedraticos basado en la misma carrera del
+	 * usuario.
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@FXML
 	private void buscarPorCarrera() throws SQLException, IOException{
 		Conexion con = new Conexion();
@@ -157,6 +163,12 @@ public final class OpControlador {
 		con.close();
 		irDesplegar(); 
 	}
+	/**
+	 * Metodo para buscar catedraticos basado en un promedio similar 
+	 * respecto a otros usuarios.
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@FXML
 	private void buscarPorPromedio() throws SQLException, IOException{
 		Conexion con = new Conexion();
@@ -202,6 +214,12 @@ public final class OpControlador {
 		con.close();
 		irDesplegar(); 
 	}
+	/**
+	 * Metodo para buscar catedraticos basado en datos especificos iguales 
+	 * respecto a otros usuarios.
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@FXML
 	private void buscarPordatos() throws SQLException, IOException{
 		Conexion con = new Conexion();
@@ -252,6 +270,12 @@ public final class OpControlador {
 		irDesplegar(); 
 
 	}
+	/**
+	 * Metodo para buscar catedraticos basado en intereses iguales 
+	 * respecto a otros usuarios.
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@FXML
 	private void buscarPorInteres() throws SQLException, IOException{
 		Conexion con = new Conexion();
@@ -295,7 +319,15 @@ public final class OpControlador {
 		Contenedor.setArreglob(arrayp);
 		Contenedor.setArreglom(arrayn);
 		con.close();
-		 irDesplegar(); 
+		irDesplegar(); 
 	}
-	
+	/**
+	 * Metodo para regresar a la ventana de ingreso.
+	 * @throws IOException
+	 */
+	@FXML
+	private void regresarRegistro() throws IOException{
+		Main main = new Main(); 
+		main.showMainView(); 
+	}
 }

@@ -46,7 +46,6 @@ public class MainControlador {
 	 */
 	@FXML
 	private void ingreso() throws SQLException, IOException{
-		System.out.println("hola");
 		Conexion con = new Conexion();
 		String query = "MATCH (n:User{user:'"+user.getText()+"',password:'"+pass.getText()+"'})\n" +
 				"RETURN n.user,n.password";

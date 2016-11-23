@@ -149,6 +149,7 @@
                 </Tab>
               </tabs>
             </TabPane>
+            <Button mnemonicParsing="false" onAction="#regresarRegistro" text="Cerrar Sesion" />
          </children>
       </AnchorPane>
    </center>

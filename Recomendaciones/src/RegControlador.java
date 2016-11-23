@@ -1,5 +1,4 @@
 import java.io.IOException;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,10 +9,11 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 1.4
+ *@version 3.0
  * Clase para manejar los registros de usuario.
  */
 public class RegControlador {
+	/*Atributos*/
 	private Main main;
 	//Listas 
 	private ObservableList<String> listaCarreras =  FXCollections.observableArrayList("Bioinformatica ","Biotecnologia Industrial ",
@@ -68,7 +68,10 @@ public class RegControlador {
 	private CheckBox deportes; 
 	@FXML
 	private CheckBox otros;
-	
+	/**
+	 * Metodo para inicializar componentes graficos en la 
+	 * ventana.
+	 */
 	@FXML
 	private  void initialize(){
 		System.out.println("jjj");
@@ -85,11 +88,20 @@ public class RegControlador {
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 4, 1);
         this.nivel.setValueFactory(valueFactory); 
 	}
+	/**
+	 * Metodo para regresar a la ventana de ingreso.
+	 * @throws IOException
+	 */
 	@FXML
 	private void regresarRegistro() throws IOException{
 		main = new Main(); 
 		main.showMainView();
 	}
+	
+	/**
+	 * Metodo para insertar datos de usuario nuevo a la
+	 * base de datos.
+	 */
 	@FXML
 	private void insertarDatos(){
 		Conexion con = new Conexion();
