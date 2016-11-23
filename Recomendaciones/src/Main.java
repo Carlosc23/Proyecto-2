@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  *@version 2.0
  * Clase encargada de dar interfaz.   
  */  
-public class Main extends Application {
+public class Main extends Application { 
 	/*Atributos*/
 	private static Stage primaryStage; 
 	//private static Stage  primary2Stage;

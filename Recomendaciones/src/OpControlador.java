@@ -180,19 +180,17 @@ public final class OpControlador {
 		String s="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),\n"
 				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
 				+"(a)-[:TAREA]->(n)<-[:TAREA]-(c),\n"
-				+"(a)-[:NIVELESTUDIO]->(n)<-[:NIVELESTUDIO]-(c),\n"
-				+"(a)-[:PREFIERE]->(n)<-[:PREFIERE]-(c),\n"
+				+"(a)-[:NIVELESTUDIO]->(t)<-[:NIVELESTUDIO]-(c),\n"
 				+"(c)-[re: OPINA{opinion:'Positivo'}]->(m2)"
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
-				+ "RETURN m2.name,c.name";
+				+ "RETURN m2.name,COUNT(c.name) as count";
 		String s2="MATCH (a:User {user:'"+Contenedor.getUsuario()+"'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),\n"
 				+ "(c)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2),\n "
 				+"(a)-[:TAREA]->(n)<-[:TAREA]-(c),\n"
-				+"(a)-[:NIVELESTUDIO]->(n)<-[:NIVELESTUDIO]-(c),\n"
-				+"(a)-[:PREFIERE]->(n)<-[:PREFIERE]-(c),\n"
+				+"(a)-[:NIVELESTUDIO]->(t)<-[:NIVELESTUDIO]-(c),\n"
 				+"(c)-[re: OPINA{opinion:'Negativo'}]->(m2)"
 				+ "WHERE NOT (a)-[:RECIBIO{curso:'"+this.cursocTxt.getText()+"'}]->(m2)\n "
-				+ "RETURN m2.name,c.name";
+				+ "RETURN m2.name,COUNT(c.name) as count";
 		ResultSet rs= con.getQuery(s);
 		int n=0;
 		while(rs.next()){
