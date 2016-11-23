@@ -1,8 +1,8 @@
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Set;
 import java.util.TreeSet;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -23,6 +23,11 @@ public final class OpControlador {
 	private RadioButton exp;
 	@FXML
 	private  void initialize(){
+		System.out.println("inicie");
+	}
+	@FXML
+	private void irDesplegar() throws IOException{
+		Main.showDesplegar();
 	}
 	@FXML
 	private void enviar(){
@@ -44,7 +49,7 @@ public final class OpControlador {
 		con.close();
 	}
 	@FXML
-	private void buscarPorColegio() throws SQLException{ 
+	private void buscarPorColegio() throws SQLException, IOException{ 
 		Conexion con = new Conexion();
 		Catedratico c;
 		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
@@ -84,10 +89,11 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
 		con.close();
+		irDesplegar(); 
 		
 	}
 	@FXML
-	private void buscarPorCarrera() throws SQLException{
+	private void buscarPorCarrera() throws SQLException, IOException{
 		Conexion con = new Conexion();
 		Catedratico c;
 		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
@@ -127,9 +133,10 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
 		con.close();
+		 irDesplegar(); 
 	}
 	@FXML
-	private void buscarPorPromedio() throws SQLException{
+	private void buscarPorPromedio() throws SQLException, IOException{
 		Conexion con = new Conexion();
 		Catedratico c;
 		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
@@ -169,9 +176,10 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
 		con.close();
+		 irDesplegar(); 
 	}
 	@FXML
-	private void buscarPordatos() throws SQLException{
+	private void buscarPordatos() throws SQLException, IOException{
 		Conexion con = new Conexion();
 		Catedratico c;
 		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
@@ -215,6 +223,7 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
 		con.close();
+		irDesplegar(); 
 		/*
 		 * MATCH (a:User {user:'Carlosc23'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),
 (a)-[:TAREA]->(t)<-[:TAREA]-(c),
@@ -222,11 +231,10 @@ public final class OpControlador {
 (c)-[re: OPINA{opinion:'Positivo'}]->(m2)
 WHERE NOT (a)-[:RECIBIO{curso:'Fisica 1'}]->(m2)
 RETURN m2.name, COUNT(c.name) as count
-		 * */
-		
+		 * */	
 	}
 	@FXML
-	private void buscarPorInteres() throws SQLException{
+	private void buscarPorInteres() throws SQLException, IOException{
 		Conexion con = new Conexion();
 		Catedratico c;
 		Set<Catedratico> arrayp = new TreeSet<Catedratico>();
@@ -266,6 +274,7 @@ RETURN m2.name, COUNT(c.name) as count
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
 		con.close();
+		 irDesplegar(); 
 	}
 	
 }

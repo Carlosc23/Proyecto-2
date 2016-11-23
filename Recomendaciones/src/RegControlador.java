@@ -71,6 +71,7 @@ public class RegControlador {
 	
 	@FXML
 	private  void initialize(){
+		System.out.println("jjj");
 		//this.carreras.setValue("Carreras");
 		this.carreras.setItems(listaCarreras);
 		this.perfiles.setItems(listaPerfiles);

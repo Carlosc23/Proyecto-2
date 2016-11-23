@@ -11,7 +11,7 @@ import javafx.stage.Stage;
  *@version 2.0
  * Clase encargada de dar interfaz.   
  */  
-public class Main extends Application { 
+public class Main extends Application {  
 	/*Atributos*/
 	private static Stage primaryStage; 
 	//private static Stage  primary2Stage;
@@ -48,7 +48,14 @@ public class Main extends Application {
 		primaryStage.setScene(scene2);
 		primaryStage.show(); 
 	}
-
+	public static void showDesplegar() throws IOException{
+		FXMLLoader loader = new FXMLLoader(); 
+		loader.setLocation(Main.class.getResource("Desplegar.fxml")); 
+		BorderPane regPane = loader.load();
+		Scene scene3 = new Scene(regPane);
+		primaryStage.setScene(scene3);
+		primaryStage.show(); 
+	}
 	public static void main(String[] args) {
 		launch(args);
 	}
