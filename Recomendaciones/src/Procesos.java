@@ -4,10 +4,11 @@ import javafx.collections.ObservableList;
 
 /**
  *  @author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *  @version 2.0
- *  Clase para hacer procesos.
+ *  @version 3.0
+ *  Clase para hacer llenar la base inicial.
  */
 public class Procesos {
+	/*Atributos*/
 	private Conexion con = new Conexion();
 	private ObservableList<String> listaCarreras =  FXCollections.observableArrayList("Bioinformatica","BiotecnologiaIndustrial ",
 			"CienciadelaAdministracion","CienciasdeAlimentos","CienciadelaComputacionyTI","Civil","CivilAmbiental","CivilArquitectonica",
@@ -26,8 +27,9 @@ public class Procesos {
 	private ObservableList<String> listaPromedio =  FXCollections.observableArrayList("Honor","Distinguido","Mencion","Promedio","Bajo");
 	private ObservableList<String> listaNivel =  FXCollections.observableArrayList("Nada","Poco","Promedio","Estudioso");
 	
-	public Procesos(){}
-	
+	/**
+	 * Metodo para llenar la base con nodos fundamentales.
+	 */
 	public void llenar(){
 		int conta=0;
 		for (String i: listaCarreras){

@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 2.0
+ *@version 3.0
  * Clase para hacer manejos con neo4j.
  */
 public class Conexion {
@@ -49,6 +49,9 @@ public class Conexion {
 		}
 		return resultado;
 	}
+	/**
+	 * Metodo para cerrar la conexion con neo4j. 
+	 */
 	public void close(){
 		try {
 			con.close();
@@ -56,6 +59,10 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Metodo para ejecutar un query general.
+	 * @param req query a insertar.
+	 */
 	public void insertar(String req){
 		try {
 			stmt.executeUpdate(req);
@@ -76,11 +83,11 @@ public class Conexion {
 		}
 	}
 
+
 	/**
-	 * @param name1	Nombre del nodo origen
-	 * @param name2 Nombre del nodo destino
-	 * @param peso	Cantidad de correos representada con length.
-	 * Metodo para hacer las relaciones entre nodos.
+	 * Metodo para relacionar a 2 usuarios por colegio.
+	 * @param user1 id del usuario 1
+	 * @param user2 id del usuario 2
 	 */
 	public void relacionarColegio(String user1, String user2){
 		try {
@@ -92,10 +99,13 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Metodo para relacionar a 2 usuarios por carrera.
+	 * @param user1 id del usuario 1
+	 * @param user2 id del usuario 2
+	 */
 	public void relacionarCarrera(String user1, String user2){
 		try {
-			
 			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
 					"MATCH (m:Carrera {name:'" + user2 + "'})" +
 					"MERGE (n)-[:ESTUDIA]->(m)");
@@ -103,9 +113,13 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Metodo para relacionar a 2 usuarios por promedio.
+	 * @param user1 id del usuario 1
+	 * @param user2 id del usuario 2
+	 */
 	public void relacionarPromedio(String user1, String user2){
 		try {
-			
 			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +
 					"MATCH (m:Promedio {name:'" + user2 + "'})" +
 					"MERGE (n)-[:CON]->(m)");
@@ -113,6 +127,11 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	}
+	/**
+	 * Metodo para relacionar a 2 usuarios por pasatiempo.
+	 * @param user1 id del usuario 1
+	 * @param user2 id del usuario 2
+	 */
 	public void relacionarPasatiempo(String user1, String user2){
 		try {
 			stmt.executeUpdate("MERGE ("+user2+":Pasatiempo {name:'"+user2+"'})");
@@ -123,6 +142,14 @@ public class Conexion {
 			e.printStackTrace();
 		}
 	} 
+	
+	/**
+	 * Metodo para relacionar datos estudiantiles especificos.
+	 * @param user1	id del usuario a relacionar.
+	 * @param prefe	Cadena con preferencia para recibir clase.
+	 * @param tare  Cadena con el gusto por tareas.
+	 * @param nive  Cadena con el nivel de estudioso(a) que es el usuario.
+	 */
 	public void relacionarDatos(String user1, String prefe, String tare,String nive){
 		try {
 			stmt.executeUpdate("MATCH (n:User {user:'" + user1 + "'})" +

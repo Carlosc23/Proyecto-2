@@ -9,10 +9,11 @@ import javafx.scene.control.TextField;
 
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 2.0
+ *@version 3.0
  * Clase para manejar los registros de usuario.
  */
 public final class OpControlador {
+	/*Atributos*/
 	@FXML
 	private TextField cursoTxt;
 	@FXML
@@ -21,14 +22,24 @@ public final class OpControlador {
 	private TextField cursocTxt;
 	@FXML
 	private RadioButton exp;
+	/**
+	 * Metodo para inicializar componentes.
+	 */
 	@FXML
 	private  void initialize(){
-		System.out.println("inicie");
+		
 	}
+	/**
+	 * Metodo para desplegar componentes.
+	 * @throws IOException
+	 */
 	@FXML
 	private void irDesplegar() throws IOException{
 		Main.showDesplegar();
 	}
+	/**
+	 * Metodo para enviar la opinion de un catedratico.
+	 */
 	@FXML
 	private void enviar(){
 		Conexion con = new Conexion();
@@ -46,8 +57,15 @@ public final class OpControlador {
 					"MATCH (m:Catedratico {name:'"+this.cateTxt.getText()+"'})" +
 					"MERGE (n)-[:OPINA{opinion:'Negativo'}]->(m)");
 		}
+		
 		con.close();
 	}
+	/**
+	 * Metodo para buscar catedraticos basado en mismo colegio del
+	 * usuario.
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@FXML
 	private void buscarPorColegio() throws SQLException, IOException{ 
 		Conexion con = new Conexion();
@@ -88,6 +106,8 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNombre());
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
+		Contenedor.setArreglob(arrayp);
+		Contenedor.setArreglom(arrayn);
 		con.close();
 		irDesplegar(); 
 		
@@ -132,8 +152,10 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNombre());
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
+		Contenedor.setArreglob(arrayp);
+		Contenedor.setArreglom(arrayn);
 		con.close();
-		 irDesplegar(); 
+		irDesplegar(); 
 	}
 	@FXML
 	private void buscarPorPromedio() throws SQLException, IOException{
@@ -175,8 +197,10 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNombre());
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
+		Contenedor.setArreglob(arrayp);
+		Contenedor.setArreglom(arrayn);
 		con.close();
-		 irDesplegar(); 
+		irDesplegar(); 
 	}
 	@FXML
 	private void buscarPordatos() throws SQLException, IOException{
@@ -222,16 +246,11 @@ public final class OpControlador {
 			System.out.println("ent"+c2.getNombre());
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
+		Contenedor.setArreglob(arrayp);
+		Contenedor.setArreglom(arrayn);
 		con.close();
 		irDesplegar(); 
-		/*
-		 * MATCH (a:User {user:'Carlosc23'})-[:PREFIERE]->(m)<-[:PREFIERE]-(c),
-(a)-[:TAREA]->(t)<-[:TAREA]-(c),
-(c)-[:RECIBIO{curso:'Fisica 1'}]->(m2),
-(c)-[re: OPINA{opinion:'Positivo'}]->(m2)
-WHERE NOT (a)-[:RECIBIO{curso:'Fisica 1'}]->(m2)
-RETURN m2.name, COUNT(c.name) as count
-		 * */	
+
 	}
 	@FXML
 	private void buscarPorInteres() throws SQLException, IOException{
@@ -273,6 +292,8 @@ RETURN m2.name, COUNT(c.name) as count
 			System.out.println("ent"+c2.getNombre());
 			System.out.println("ent"+c2.getNumeroValoraciones());
 		}
+		Contenedor.setArreglob(arrayp);
+		Contenedor.setArreglom(arrayn);
 		con.close();
 		 irDesplegar(); 
 	}

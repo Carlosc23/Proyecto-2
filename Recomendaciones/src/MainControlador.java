@@ -6,13 +6,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 /**
  *@author Carlos Calderon , Marisol Barillas , Jorge Azmitia
- *@version 2.0 
- * Clase para manejar los registros acciones de login
+ *@version 3.0 
+ * Clase para manejar los registros acciones de login.
  */
 public class MainControlador {
+	/*Atributos*/
 	private boolean ingresar;
 	@FXML
 	private TextField user;
+	
 	public TextField getUser() {
 		return user;
 	}
@@ -21,14 +23,27 @@ public class MainControlador {
 	}
 	@FXML
 	private TextField pass;
+	/**
+	 * Mostrar la ventana registro.
+	 * @throws IOException
+	 */
 	@FXML
 	private void irRegistro() throws IOException{
 		Main.showRegistro();
 	}
+	/**
+	 * Mostrar la ventana de opiniones.
+	 * @throws IOException
+	 */
 	@FXML
 	private void irOp() throws IOException{
 		Main.showOp();
 	}
+	/**
+	 * Metodo para validar ingresos del usuario ya registrado.
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	@FXML
 	private void ingreso() throws SQLException, IOException{
 		System.out.println("hola");
